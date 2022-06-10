@@ -1,15 +1,32 @@
-# flutter_package
+# http-flutter
+A composable, Future-based library for making HTTP requests. This library use http package
 
-A new Flutter package.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
-Suppoerted flutter version 2.2.3 and below
+- Contain all HTTP requests in sepearte file and return one common class to hadle HTTP request like a pro.
+- Check for internet connection before calling any API
+- Return common class RequestResponse for all types of HTTP request
+- Can make multi-part request
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Installation
+
+Install the dependencies in pubspecs.yaml file
+
+```sh
+http_kit:
+  git:
+    url: https://github.com/SarvadhiSolutionsLabs/http-flutter.git
+```
+
+## Using the library
+
+```sh
+Future _getPost() async {
+    const String url = 'https://jsonplaceholder.typicode.com/posts';
+    final RequestResponse _response = await HttpKit.get(url);
+    print(_response);
+    _posts = PostModel.fromJson(_response.data);
+    print(_posts);
+}
+```
